@@ -1,0 +1,27 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { HomePage } from './index';
+
+describe('HomePage component', () => {
+  test('renders input element', () => {
+    render(<HomePage />);
+    const inputElement = screen.getByPlaceholderText('Введите название города');
+    expect(inputElement).toBeInTheDocument();
+  });
+
+  test('updates search state on user input', () => {
+    render(<HomePage />);
+    const inputElement = screen.getByPlaceholderText('Введите название города');
+    userEvent.type(inputElement, 'Moscow');
+    expect(inputElement).toHaveValue('Moscow');
+  });
+
+  test('shows dropdown with search results on input click', () => {
+    render(<HomePage />);
+    const inputElement = screen.getByPlaceholderText('Введите название города');
+    userEvent.click(inputElement);
+    const dropdownElement = screen.getByRole('listbox');
+    expect(dropdownElement).toBeInTheDocument();
+  });
+});

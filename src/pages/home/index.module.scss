@@ -1,0 +1,95 @@
+@use "../../shared/consts/colors.scss" as colors;
+@use "../../shared/consts/breakpoints.scss" as breakpoints;
+
+.container {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: colors.$backgroundColor;
+  font-size: 14px;
+}
+
+.choice {
+  font-size: 64px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  color: colors.$white;
+  text-shadow: 2px 2px 4px rgba(3, 18, 21, 0.5); 
+  text-align: center; 
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem 4rem;
+
+  @media (max-width: breakpoints.$tablet) {
+    padding: 1rem;
+  }
+}
+
+.search {
+  height: 30px;
+  padding: 1rem; /* Установим внутренние отступы */
+  border: 0;
+  border-radius: 5px; /* Установим одинаковые радиусы границ */
+  font-size: 20px;
+  font-family: 'Comfortaa', sans-serif;
+  transition: box-shadow 0.3s ease; 
+  width: 100%; /* Используем ширину 100% */
+}
+
+.search:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
+}
+
+.inputContainer {
+  width: 100%;
+  position: relative;
+  margin: 0 auto 4rem auto;
+  min-width: 50vw;
+
+  input {
+    width: 100%;
+  }
+}
+
+.dropdown {
+  width: 100%; /* Используем ширину 100% */
+  padding: 1rem; /* Установим такие же внутренние отступы */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  font-family: 'Exo 2';
+  opacity: 0; 
+  max-height: 0; 
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease; 
+}
+
+.dropdown.open {
+  opacity: 1; 
+  max-height: 200px;
+  width: 100%; 
+}
+
+.dropdownItem {
+  text-align: left;
+  padding: 1rem;
+  border: 0;
+  border-radius: 5px; 
+  font-size: 20px;
+  font-family: 'Comfortaa', sans-serif;
+
+}
+
+.dropdownActiveItem {
+  &:hover {
+    background: #d2d1d1;
+    cursor: pointer;
+  }
+}
